@@ -43,43 +43,60 @@ public class FxMain extends Application {
         grid.add(txt, 2, 0,2,1);
         
         Button btn1 = new Button();
-        btn1.setText("Iterative");
+        btn1.setText("Iterative and Recursive");
         btn1.setOnAction(new EventHandler<ActionEvent>() {
             
             @Override
             public void handle(ActionEvent event) {
-                int fibI =getIterative(Integer.valueOf(txt.getText()));
-
+                int fibI;
+                int N = 0;
                 Alert alert = new Alert(AlertType.INFORMATION);
-                alert.setTitle("Fibonacci Iterative");
-                alert.setHeaderText("Fibonacci series");
-                alert.setContentText("The " + txt.getText() + "th value in the " 
-                        + "Fibonacci series is " + fibI );
-                alert.showAndWait();
+                alert.setTitle("Error");
+                alert.setHeaderText("Improper input");
+                
+                if(txt.getText().length() == 0){
+                    alert.setContentText("N must be a number!") ;
+                    alert.showAndWait();}
+                try{
+                    N = Integer.valueOf(txt.getText());
+                    
+                if(N<0){
+                    alert.setContentText("N must be a positive number!") ;
+                    alert.showAndWait();
+                }
+                else{
+                    fibI = getIterative(Integer.valueOf(N));
+                    
+                    //iterative
+                    alert.setTitle("Fibonacci Iterative");
+                    alert.setHeaderText("Fibonacci Iterative");
+                    alert.setContentText("The " + N + "th value in the " 
+                            + "Fibonacci series is " + fibI );
+                    alert.showAndWait();
+                    //recursive
+                    alert.setTitle("Fibonacci Recursive");
+                    alert.setHeaderText("Fibonacci Recursive");
+                    alert.setContentText("The " + N + "th value in the " 
+                            + "Fibonacci series is " + getRecursive(N));
+                    alert.showAndWait();
+                }
+                    
+                }
+                catch(Exception e){
+                    alert.setContentText("N must be an integer!") ;
+                    alert.showAndWait();  
+                }
+                
+                    
+                    
+                    
+                
+                
             }
         });
         
         grid.add(btn1, 2, 1);
-        Button btn2 = new Button();
-        btn2.setText("Recursive");
-        btn2.setOnAction(new EventHandler<ActionEvent>() {
-            
         
-            @Override
-            public void handle(ActionEvent event) {
-                Alert alert = new Alert(AlertType.INFORMATION);
-                alert.setTitle("Fibonacci Recursive");
-                alert.setHeaderText("Fibonacci series");
-                alert.setContentText("The " + txt.getText() + "th value in the " 
-                        + "Fibonacci series is " + getRecursive(Integer.valueOf(txt.getText())) );
-                alert.showAndWait();
-                
-                ;
-            }
-        });
-        
-        grid.add(btn2, 3, 1);
-  
         Button btnChart = new Button();
         btnChart.setText("View Chart");
         btnChart.setOnAction(new EventHandler<ActionEvent>() {
