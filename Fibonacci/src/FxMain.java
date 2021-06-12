@@ -142,7 +142,6 @@ public class FxMain extends Application {
         return fibR;
     }
  private LineChart GetChart(){
-        //stage.setTitle("Fibonacci Iterative vs Recursive methods");
         //defining the axes
         final NumberAxis xAxis = new NumberAxis();
         final NumberAxis yAxis = new NumberAxis();

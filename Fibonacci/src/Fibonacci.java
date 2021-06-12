@@ -17,11 +17,14 @@ public class Fibonacci {
         //otherwise do the calculation
         for(int i=2; i<=n; i++){        
             fibArray[i] = fibArray[i-1] + fibArray[i-2];
-            //i++;
         }
         
         int fib = fibArray[n];
+        //grab the end time
         endTime = System.nanoTime();
+        //calculate the process time
+        //the start time is grabbed before the 
+        //first instance os the method is run
         processTime=endTime-startTime;
         return fib;
         
@@ -33,8 +36,11 @@ public class Fibonacci {
            fib=n;
         else
            fib= FibRecursive(n - 1) + FibRecursive(n - 2);
-
+        //grab the end time
         endTime=System.nanoTime();
+        //calculate the process time
+        //the start time is grabbed before the 
+        //first instance os the method is run
         processTime=endTime-startTime;
         return fib;
     }
