@@ -160,7 +160,7 @@ public class FxMain extends Application {
             series.getData().add(new XYChart.Data(iterativeArray.get(i),iterativeTimeArray.get(i)));
         }
         
-               //defining a series
+         //defining a series
         XYChart.Series series2 = new XYChart.Series();
         series2.setName("Recursive");
         //populating the series with data
