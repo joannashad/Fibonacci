@@ -4,32 +4,37 @@
  * and open the template in the editor.
  */
 
-import java.util.ArrayList;
 import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import javafx.scene.Scene;
-import javafx.scene.chart.LineChart;
-import javafx.scene.chart.NumberAxis;
-import javafx.scene.chart.XYChart;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
-import javafx.scene.layout.GridPane;
-
-import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 
 public class FxMain extends Application {
-    ArrayList<Integer> iterativeArray = new ArrayList<Integer>();
-    ArrayList<Long> iterativeTimeArray = new ArrayList<Long>();
-    ArrayList<Integer> recursiveArray = new ArrayList<Integer>();
-    ArrayList<Long> recursiveTimeArray = new ArrayList<Long>();
-    
+
     @Override
+    public void start(Stage primaryStage) {
+        int N = 15;
+        int fibI;
+        fibI = getRecursive(N);
+        System.out.println("The " + N + " number of the Fibonacci series is " + fibI);
+
+
+    }
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        launch(args);
+    }
+
+    private int getRecursive(int n){
+        Fibonacci fib = new Fibonacci();
+        int fibR = fib.FibRecursive(n);       
+        return fibR;
+    }
+ 
+ /*
+  @Override
     public void start(Stage primaryStage) {
         GridPane grid = new GridPane();
         grid.setHgap(10);
@@ -117,31 +122,7 @@ public class FxMain extends Application {
         primaryStage.setScene(scene);
         primaryStage.show();
     }
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        launch(args);
-    }
-    private int getIterative(int n){
-        Fibonacci fib = new Fibonacci();
-        fib.startTime =  System.nanoTime();
-        int fibI = fib.FibIterative(n);
-        iterativeArray.add(n);
-        iterativeTimeArray.add(fib.processTime);
-        return fibI;
-        
-    }
-    private int getRecursive(int n){
-        Fibonacci fib = new Fibonacci();
-        fib.startTime =  System.nanoTime();
-        int fibR = fib.FibRecursive(n);
-        recursiveArray.add(n);
-        recursiveTimeArray.add(fib.processTime);        
-        return fibR;
-    }
- private LineChart GetChart(){
+    private LineChart GetChart(){
         //defining the axes
         final NumberAxis xAxis = new NumberAxis();
         final NumberAxis yAxis = new NumberAxis();
@@ -172,4 +153,14 @@ public class FxMain extends Application {
         return lineChart;
         
         }
+       private int getIterative(int n){
+        Fibonacci fib = new Fibonacci();
+        fib.startTime =  System.nanoTime();
+        int fibI = fib.FibIterative(n);
+        iterativeArray.add(n);
+        iterativeTimeArray.add(fib.processTime);
+        return fibI;
+        
+    } 
+*/
 }
